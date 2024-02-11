@@ -1,0 +1,20 @@
+@page "/htmx-test"
+@model HTMXDemo.UI.Pages.Htmx
+
+@{
+    ViewData["Title"] = "HTMX Reference";
+    ViewData["Nav"] = "htmx";
+}
+
+<p>Let's verify that HTMX is working.</p>
+
+<div class="card m-5 p-5 ms-0 text-center">
+    <h2 class="fs-1 mb-4" id="target">Change Me!</h2>
+
+    <button class="btn btn-primary btn-lg px-4"
+            hx-get="@Url.Page("Htmx")"
+            hx-target="#target"
+            hx-swap="innerHtml">
+        Click Me
+    </button>
+</div>

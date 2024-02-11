@@ -1,0 +1,39 @@
+@page "/alpine-test"
+@model HTMXDemo.UI.Pages.Alpine
+
+@{
+    ViewData["Title"] = "Alpine Reference";
+    ViewData["Nav"] = "alpine";
+}
+
+@section Head {
+    <script defer src="~/lib/alpinejs/cdn.min.js"></script>
+}
+
+@section Scripts {
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('pageData', () => ({
+                name: 'Bubba Gump Shrimp Co.',
+                showThis: true
+            }));
+        });
+    </script>
+}
+
+<p>Let's verify that Alpine.js is working.</p>
+
+<div class="card m-5 p-5 ms-0 text-center" x-data="pageData">
+    <div>
+        <h2 x-text="name"></h2>
+    </div>
+    
+    <div>
+        <p x-show="showThis">Flag is active</p>
+        <p x-show="!showThis">Flag is inactive</p>
+    </div>
+
+    <button class="btn btn-primary btn-lg px-4" x-on:click="showThis = !showThis">
+        Click Me
+    </button>
+</div>
